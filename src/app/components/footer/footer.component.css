@@ -4,7 +4,6 @@ footer {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin-top: auto;
   background-color: #0e0e0e;
   color: #e2dbe2;
 }
@@ -47,17 +46,24 @@ footer .foot-container .menu-container ul {
   font-size: 18px;
 }
 
-footer .foot-container .contact-container .social-container{
+footer .foot-container .contact-container .social-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-top: 5px;
 }
-footer .foot-container .contact-container p{
+footer .foot-container .contact-container p {
   margin-top: 14px;
 }
 
-footer .foot-container .contact-container .social-container ul{
+footer .foot-container .contact-container .social-container ul {
   display: flex;
   gap: 10px;
+}
+
+@media only screen and (min-width: 2189px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
 }
