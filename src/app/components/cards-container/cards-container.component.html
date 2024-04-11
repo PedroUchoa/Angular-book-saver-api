@@ -1,14 +1,5 @@
 <div class="card-container">
-  <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
-    <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
-  <app-cards />
+ @for (item of arrayCards(); track item) {
+  <app-cards [imgSrc]="item.image" [title]="item.name" />
+ }
 </div>
