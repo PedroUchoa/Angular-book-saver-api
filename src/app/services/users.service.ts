@@ -1,16 +1,19 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BooksService {
+export class UsersService {
   private http = inject(HttpClient);
 
   BASE_URL = signal('http://localhost:8080');
 
-  getPosts(): Observable<any> {
-    return this.http.get<any>(`${this.BASE_URL()}/books`);
+  constructor() {}
+
+  createUser(form: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL()}/auth/login`, form);
   }
 }

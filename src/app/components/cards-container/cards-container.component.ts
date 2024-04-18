@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, Input, OnInit, signal } from '@angular/core';
 
 import { ICards } from '../../interface/ICards.interface';
 import { BooksService } from '../../services/books.service';
@@ -13,22 +13,17 @@ import { CardsComponent } from '../cards/cards.component';
   styleUrl: './cards-container.component.css',
 })
 export class CardsContainerComponent implements OnInit {
-
   bookService = inject(BooksService);
 
-  public arrayCards = signal<ICards[] | null>(null);
-
+  @Input() arrayCards = signal<ICards[] | null>(null);
 
   ngOnInit(): void {
     this.getCards();
   }
 
-  getCards(){
-    this.bookService.getPosts().subscribe(res =>{
-      this.arrayCards.set(res.content)
-
+  getCards() {
+    this.bookService.getPosts().subscribe((res) => {
+      this.arrayCards.set(res.content);
     });
-
   }
-
 }

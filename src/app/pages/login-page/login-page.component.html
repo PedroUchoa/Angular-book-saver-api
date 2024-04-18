@@ -9,11 +9,30 @@
     <h1>Sign in to BookSaver</h1>
   </div>
 
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="makeLogin()">
     <label for="login">Login</label>
-    <input id="login" type="text" />
+    <input
+      id="login"
+      type="text"
+      formControlName="login"
+      class="input-form"
+      [ngClass]="{ 'invalid': loginForm.controls['login'].errors?.['required'] && loginForm.controls['login'].touched}"
+    />
+
     <label for="password">Password</label>
-    <input id="password" type="password" />
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      class="input-form"
+      [ngClass]="{ 'invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}"
+    />
+
     <button>Sign Up</button>
   </form>
+
+  <div class="sing-up">
+    <p>Don't have an account?</p>
+    <a href="">Sign Up</a>
+  </div>
 </div>
