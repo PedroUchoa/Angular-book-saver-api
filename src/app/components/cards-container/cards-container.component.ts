@@ -18,12 +18,7 @@ export class CardsContainerComponent implements OnInit {
   @Input() arrayCards = signal<ICards[] | null>(null);
 
   ngOnInit(): void {
-    this.getCards();
   }
 
-  getCards() {
-    this.bookService.getPosts().subscribe((res) => {
-      this.arrayCards.set(res.content);
-    });
-  }
+
 }

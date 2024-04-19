@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsersService } from '../../services/users.service';
-import { Observable } from 'rxjs';
-import { response } from 'express';
 import { Router } from '@angular/router';
 import { error } from 'console';
+
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +14,7 @@ import { error } from 'console';
   styleUrl: './login-page.component.css',
 })
 export class LoginPageComponent {
+
   loginForm = new FormGroup({
     login: new FormControl('', Validators.required),
     password: new FormControl('', [
@@ -27,9 +27,11 @@ export class LoginPageComponent {
   router = inject(Router)
 
   makeLogin() {
+    //this.userService.login(this.loginForm.value).subscribe((r)=>console.log(r))
+
     if (this.loginForm.valid) {
-      this.userService.createUser(this.loginForm.value).subscribe(
-        (data) => {localStorage.setItem('token', data.token), this.router.navigate(['/home'])},
+      this.userService.login(this.loginForm.value).subscribe(
+        (data) => {console.log(data), this.router.navigate(['/home'])},
         (error) => alert('Login or Password invalid, please try again')
       );
     } else {
