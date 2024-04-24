@@ -42,8 +42,19 @@ footer .foot-container .contact-container h3 {
 
 footer .foot-container .menu-container ul {
   gap: 5px;
-  text-decoration: underline;
   font-size: 18px;
+}
+
+footer .foot-container .menu-container ul li a {
+  gap: 5px;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 1.2px solid #e9ecef;
+  color: #e9ecef;
+}
+
+footer .foot-container .menu-container ul li a:hover{
+  border-bottom: 1.2px solid #6c757d;
 }
 
 footer .foot-container .contact-container .social-container {

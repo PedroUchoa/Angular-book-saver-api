@@ -31,7 +31,7 @@ export class LoginPageComponent {
 
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(
-        (data) => {console.log(data), this.router.navigate(['/home'])},
+        (data) => { this.router.navigate(['/home'])},
         (error) => alert('Login or Password invalid, please try again')
       );
     } else {

@@ -9,7 +9,7 @@ export class UsersService {
   private http = inject(HttpClient);
 
   BASE_URL = signal('http://localhost:8080');
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly JWT_TOKEN = 'token';
   private loggedUser?: string;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
@@ -24,6 +24,7 @@ export class UsersService {
   }
 
   private doLoginUser(login: string, tokens: any) {
+    console.log('testee')
     this.loggedUser = login;
     this.storeJwtToken(tokens);
     this.isAuthenticatedSubject.next(true);
@@ -38,13 +39,12 @@ export class UsersService {
     this.isAuthenticatedSubject.next(false);
   }
 
-  getUSerByTokenJwt() {
-    let token = localStorage.getItem(this.JWT_TOKEN);
-
+  getUSerByTokenJwt(token:string | null) {
     return this.http.get(`${this.BASE_URL()}/users/userJwt`, {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
+      headers: new HttpHeaders().set(
+        'Authorization',
+        `Bearer ${token}`
+      ),
     });
   }
 }

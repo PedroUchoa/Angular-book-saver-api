@@ -28,7 +28,7 @@
       [ngClass]="{ 'invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}"
     />
 
-    <button>Sign Up</button>
+    <button (onclick)="makeLogin()">Sign Up</button>
   </form>
 
   <div class="sing-up">
