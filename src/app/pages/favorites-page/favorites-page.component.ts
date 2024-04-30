@@ -34,11 +34,9 @@ export class FavoritesPageComponent implements OnInit {
       this.userService.getUSerByTokenJwt(token).subscribe(
         (data: any) => this.arrayCards.set(data.books),
         (error) => {
-          this.router.navigate(['']);
+          alert(error)
         }
       );
-    }else{
-      this.router.navigate(['']);
     }
   }
 

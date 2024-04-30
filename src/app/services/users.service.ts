@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { IUser } from '../interface/IUsers.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,6 @@ export class UsersService {
   }
 
   private doLoginUser(login: string, tokens: any) {
-    console.log('testee')
     this.loggedUser = login;
     this.storeJwtToken(tokens);
     this.isAuthenticatedSubject.next(true);
@@ -39,12 +39,23 @@ export class UsersService {
     this.isAuthenticatedSubject.next(false);
   }
 
-  getUSerByTokenJwt(token:string | null) {
-    return this.http.get(`${this.BASE_URL()}/users/userJwt`, {
-      headers: new HttpHeaders().set(
-        'Authorization',
-        `Bearer ${token}`
-      ),
+  getUSerByTokenJwt(token: string | null):Observable<IUser> {
+    return this.http.get<IUser>(`${this.BASE_URL()}/users/userJwt`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
     });
+  }
+
+  addBookToUser(bookId: string, userId: string, token: string | null) {
+    var bookJson = { bookId: bookId };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+    let options = { headers: headers };
+     this.http.post(
+      `${this.BASE_URL()}/users/add/${userId}`,
+      bookJson,
+      options
+    ).subscribe();
   }
 }

@@ -27,7 +27,6 @@ export class LoginPageComponent {
   router = inject(Router)
 
   makeLogin() {
-    //this.userService.login(this.loginForm.value).subscribe((r)=>console.log(r))
 
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(

@@ -14,11 +14,11 @@ import { CardsComponent } from '../cards/cards.component';
 })
 export class CardsContainerComponent implements OnInit {
   bookService = inject(BooksService);
-
   @Input() arrayCards = signal<ICards[] | null>(null);
 
   ngOnInit(): void {
   }
+
 
 
 }
