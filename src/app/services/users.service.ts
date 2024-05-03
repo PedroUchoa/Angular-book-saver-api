@@ -24,6 +24,28 @@ export class UsersService {
       );
   }
 
+  createUser(form: any) {
+    return this.http.post(`${this.BASE_URL()}/users/register`, form, {
+      responseType: 'text',
+    });
+  }
+
+  getUSerByTokenJwt(token: string | null): Observable<IUser> {
+    return this.http.get<IUser>(`${this.BASE_URL()}/users/userJwt`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
+    });
+  }
+
+  addBookToUser(bookId: string, userId: string, token: string | null) {
+    var bookJson = { bookId: bookId };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+    let options = { headers: headers };
+    this.http.post(`${this.BASE_URL()}/users/add/${userId}`, bookJson, options);
+  }
+
   private doLoginUser(login: string, tokens: any) {
     this.loggedUser = login;
     this.storeJwtToken(tokens);
@@ -37,25 +59,5 @@ export class UsersService {
   logout() {
     localStorage.removeItem(this.JWT_TOKEN);
     this.isAuthenticatedSubject.next(false);
-  }
-
-  getUSerByTokenJwt(token: string | null):Observable<IUser> {
-    return this.http.get<IUser>(`${this.BASE_URL()}/users/userJwt`, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
-    });
-  }
-
-  addBookToUser(bookId: string, userId: string, token: string | null) {
-    var bookJson = { bookId: bookId };
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-    let options = { headers: headers };
-     this.http.post(
-      `${this.BASE_URL()}/users/add/${userId}`,
-      bookJson,
-      options
-    ).subscribe();
   }
 }

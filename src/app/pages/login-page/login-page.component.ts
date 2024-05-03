@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { error } from 'console';
+import { Router, RouterLink } from '@angular/router';
 
+import { HeaderSignComponent } from '../../components/header-sign/header-sign.component';
 import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,HeaderSignComponent,RouterLink],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
 })

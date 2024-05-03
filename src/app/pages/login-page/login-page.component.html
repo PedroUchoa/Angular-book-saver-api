@@ -1,13 +1,5 @@
 <div class="login-container">
-  <div class="header-container">
-    <img
-      src="assets/icons/book.svg"
-      alt="Icone livro"
-      height="32px"
-      width="32px"
-    />
-    <h1>Sign in to BookSaver</h1>
-  </div>
+  <app-header-sign type="Sign In" />
 
   <form [formGroup]="loginForm" (ngSubmit)="makeLogin()">
     <label for="login">Login</label>
@@ -25,14 +17,18 @@
       type="password"
       formControlName="password"
       class="input-form"
-      [ngClass]="{ 'invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}"
+      [ngClass]="{
+        invalid:
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+      }"
     />
 
     <button (onclick)="makeLogin()">Sign Up</button>
   </form>
 
-  <div class="sing-up">
+  <div class="sign-up">
     <p>Don't have an account?</p>
-    <a href="">Sign Up</a>
+    <a routerLink="/signup">Sign Up</a>
   </div>
 </div>

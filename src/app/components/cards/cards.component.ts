@@ -1,8 +1,7 @@
-import { IUser } from './../../interface/IUsers.interface';
 import { Component, inject, Input, OnInit } from '@angular/core';
 
-import { UsersService } from './../../services/users.service';
 import { ICards } from '../../interface/ICards.interface';
+import { UsersService } from './../../services/users.service';
 
 @Component({
   selector: 'app-cards',

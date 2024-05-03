@@ -1,0 +1,47 @@
+<div class="login-container">
+  <app-header-sign type="Sign Up" />
+
+  <form [formGroup]="signupForm" (ngSubmit)="doCreateUser()">
+    <label for="login">Login</label>
+    <input
+      id="login"
+      type="text"
+      class="input-form"
+      formControlName="login"
+      [ngClass]="{ 'invalid': signupForm.controls['login'].errors?.['required'] && signupForm.controls['login'].touched}"
+    />
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      class="input-form"
+      formControlName="password"
+      [ngClass]="{
+        invalid:
+          signupForm.controls['password'].invalid &&
+          signupForm.controls['password'].touched
+      }"
+    />
+
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      class="input-form"
+      formControlName="name"
+      [ngClass]="{
+        invalid:
+          signupForm.controls['name'].invalid &&
+          signupForm.controls['name'].touched
+      }"
+    />
+
+    <button>Sign Up</button>
+  </form>
+
+  <div class="sign-in">
+    <p>Do You Have an Account?</p>
+    <a routerLink="/login">Sign in</a>
+  </div>
+</div>

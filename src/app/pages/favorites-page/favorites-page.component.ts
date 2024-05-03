@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { error } from 'node:console';
 
 import { CardsContainerComponent } from '../../components/cards-container/cards-container.component';
 import { FooterComponent } from '../../components/footer/footer.component';
