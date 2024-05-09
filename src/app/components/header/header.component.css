@@ -29,12 +29,6 @@ header ul {
   margin-bottom: 5px;
 }
 
-.xxx {
-  height: 100px;
-  width: 158px;
-  visibility: hidden;
-}
-
 header ul li a {
   color: #e9ecef;
   text-decoration: none;
@@ -49,10 +43,29 @@ header ul li a:hover {
 
 }
 
+.logout-container {
+  margin-right: 40px;
+}
+
+.logout-container button{
+  background-color: transparent;
+  color: #e9ecef;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  transition: 300ms ease-in-out;
+}
+
+.logout-container button:hover{
+  border: 1px solid #6c757d;
+  cursor: pointer;
+}
+
 
 @media only screen and (max-device-width: 650px) {
   header {
-    height: 120px;
+    height: 180px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -66,10 +79,16 @@ header ul li a:hover {
     align-items: center;
     justify-content: center;
     gap: 0;
-    margin-top: 20px;
   }
 
   header ul {
-    margin-top: 20px;
+    margin-top: 10px;
   }
+
+  .logout-container button{
+    margin-right: 0;
+    margin-left: 25px;
+    margin-top: 15px;
+  }
+
 }

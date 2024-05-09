@@ -16,6 +16,9 @@ import { BooksService } from '../../services/books.service';
 export class HomePageComponent implements OnInit {
 
   arrayCards = signal<ICards[] | null>(null);
+  currentPage = 0;
+  totalPages = 0;
+  limit = 12;
 
   bookService = inject(BooksService);
 
@@ -24,8 +27,24 @@ export class HomePageComponent implements OnInit {
   }
 
   getCards() {
-    this.bookService.getPosts().subscribe((res) => {
+    this.bookService.getPosts(this.currentPage,this.limit).subscribe((res) => {
       this.arrayCards.set(res.content);
+      this.totalPages = res.totalPages;
     });
   }
+
+  previousPage(){
+    if(this.currentPage >= 1){
+      this.currentPage--;
+      this.getCards();
+    }
+  }
+
+  nextPage(){
+    if(this.currentPage < this.totalPages){
+      this.currentPage++;
+      this.getCards();
+    }
+  }
+
 }

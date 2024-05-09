@@ -1,8 +1,14 @@
 <div class="card-container">
- @for (item of arrayCards(); track item) {
+  @for (item of arrayCards(); track item) {
   <app-cards [imgSrc]="item.image" [title]="item.name" [bookId]="item.id" />
 
- }@empty {
+  }@empty {
   <h1>No book found, please try again</h1>
- }
+  }
+</div>
+
+<div class="menu-container">
+  <button (click)="emitPreviousPage()" [disabled]="currentPage+1  === 1">Previous</button>
+  <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+  <button (click)="emitNextPage()" [disabled]="currentPage + 1 === totalPages">Next</button>
 </div>

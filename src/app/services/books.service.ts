@@ -10,7 +10,10 @@ export class BooksService {
 
   BASE_URL = signal('http://localhost:8080');
 
-  getPosts(): Observable<any> {
-    return this.http.get<any>(`${this.BASE_URL()}/books`);
+
+
+  getPosts(page:number, limit: number): Observable<any> {
+    const params = {page:page.toString(), limit: limit.toString()}
+    return this.http.get<any>(`${this.BASE_URL()}/books`, {params});
   }
 }
