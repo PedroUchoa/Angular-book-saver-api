@@ -21,24 +21,46 @@ import { UsersService } from '../../services/users.service';
   styleUrl: './favorites-page.component.css',
 })
 export class FavoritesPageComponent implements OnInit {
-  arrayCards = signal<ICards[] | null>(null);
-
+  cards = signal<ICards[] | null>(null);
   userService = inject(UsersService);
-
   router = inject(Router);
+  currentPage = 0;
+  totalPages = 0;
+  limit = 12;
 
-  constructor() {
-    let token = localStorage.getItem('token');
-    if(token != null){
-      this.userService.getUSerByTokenJwt(token).subscribe(
-        (data: any) => this.arrayCards.set(data.books),
-        (error) => {
-          alert(error)
-        }
-      );
+  ngOnInit(): void {
+    this.getValue();
+  }
+
+  getValue() {
+    const token = localStorage.getItem('token');
+    if (token != null) {
+      this.userService.getUSerByTokenJwt(token).subscribe((data) => {
+        this.getBooksFavorites(data.id);
+      });
     }
   }
 
-  ngOnInit(): void {}
+  getBooksFavorites(userId: string) {
+    this.userService
+      .getBooksFavorites(this.currentPage, this.limit, userId)
+      .subscribe((data) => {
+        this.cards.set(data.content);
+        this.totalPages = data.totalPages;
+      });
+  }
 
+  previousPage() {
+    if (this.currentPage >= 1) {
+      this.currentPage--;
+      this.getValue();
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getValue();
+    }
+  }
 }

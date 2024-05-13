@@ -21,7 +21,9 @@ export class CardsContainerComponent implements OnInit {
   @Output() nextPage: EventEmitter<any> = new EventEmitter();
   @Output() previousPage: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   emitNextPage() {
     this.nextPage.emit('');

@@ -2,7 +2,13 @@
   <app-header />
 
   <main>
-    <app-cards-container [arrayCards]="arrayCards" />
+      <app-cards-container
+      [arrayCards]="cards"
+      [totalPages]="totalPages"
+      [currentPage]="currentPage"
+      (nextPage)="nextPage()"
+      (previousPage)="previousPage()"
+    />
   </main>
 
   <app-footer />

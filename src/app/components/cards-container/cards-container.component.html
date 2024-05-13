@@ -7,8 +7,12 @@
   }
 </div>
 
+@if (totalPages > 0) {
 <div class="menu-container">
   <button (click)="emitPreviousPage()" [disabled]="currentPage+1  === 1">Previous</button>
   <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
   <button (click)="emitNextPage()" [disabled]="currentPage + 1 === totalPages">Next</button>
 </div>
+
+}
+

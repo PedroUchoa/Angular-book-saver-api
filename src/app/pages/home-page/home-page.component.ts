@@ -30,6 +30,7 @@ export class HomePageComponent implements OnInit {
     this.bookService.getPosts(this.currentPage,this.limit).subscribe((res) => {
       this.arrayCards.set(res.content);
       this.totalPages = res.totalPages;
+
     });
   }
 

@@ -25,7 +25,6 @@ export class CardsComponent implements OnInit {
 
   addBook() {
     this.getValues();
-    console.log(this.userBooks)
     const hasBook = this.userBooks.some((item) => item.id === this.bookId);
 
     if(hasBook) return alert('Livro já está favoritado')

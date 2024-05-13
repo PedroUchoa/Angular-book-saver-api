@@ -1,6 +1,7 @@
 .card {
-  width: 250px;
-  height: 450px;
+  position: relative;
+  width: 282px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +23,9 @@
 }
 
 .card button {
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  width: 95%;
   height: 30px;
   margin-top:12px;
   font-size: 18px;
@@ -31,6 +34,7 @@
   border: 1px solid #0e0e0e;
   transition: 400ms ease-in-out;
   font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .card button:hover {
@@ -42,6 +46,7 @@
 
 @media only screen and (max-device-width: 760px) {
   .card {
+
     width: 280px;
     height: 430px;
     padding: 10px;
@@ -49,6 +54,8 @@
 
   .card h2 {
     margin-top: 10px;
+
+  font-size: 14px;
   }
 
   .card p {
@@ -57,6 +64,8 @@
   }
 
   .card button {
+    position: relative;
+    width: 100%;
     height: 35px;
     margin-top: 10px;
     font-size: 18px;
