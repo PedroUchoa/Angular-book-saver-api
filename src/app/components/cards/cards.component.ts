@@ -1,7 +1,14 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 
 import { ICards } from '../../interface/ICards.interface';
 import { UsersService } from './../../services/users.service';
+import { CardsModalComponent } from '../cards-modal/cards-modal.component';
 
 @Component({
   selector: 'app-cards',
@@ -13,11 +20,19 @@ import { UsersService } from './../../services/users.service';
 export class CardsComponent implements OnInit {
   usersService = inject(UsersService);
   userId: string = '';
-  userBooks: ICards[] = [];
-  @Input() imgSrc: string = '';
-  @Input() title: string = '';
-  @Input() bookId: string = '';
+  userBooksFavorites: ICards[] = [];
+  @Input() cards: ICards = {
+    id: '',
+    name: '',
+    author: '',
+    description: '',
+    image: '',
+    categories: [],
+  }
+
   token: string | null = localStorage.getItem('token');
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getValues();
@@ -25,23 +40,33 @@ export class CardsComponent implements OnInit {
 
   addBook() {
     this.getValues();
-    const hasBook = this.userBooks.some((item) => item.id === this.bookId);
+    const hasBook = this.userBooksFavorites.some(
+      (item) => item.id === this.cards.id
+    );
 
-    if(hasBook) return alert('Livro já está favoritado')
+    if (hasBook) return alert('Livro já está favoritado');
 
     if (this.token != null && this.userId != '') {
-      this.usersService.addBookToUser(this.bookId, this.userId, this.token);
+      this.usersService.addBookToUser(this.cards.id, this.userId, this.token);
       alert('Livro favoritado com sucesso');
     }
   }
 
-  getValues(){
-        if (this.token != null) {
-          this.usersService.getUSerByTokenJwt(this.token).subscribe((data) => {
-            this.userId = data.id;
-            this.userBooks = data.books;
-          });
-        }
+  getValues() {
+    if (this.token != null) {
+      this.usersService.getUSerByTokenJwt(this.token).subscribe((data) => {
+        this.userId = data.id;
+        this.userBooksFavorites = data.books;
+      });
+    }
+  }
+
+  openDialog(){
+    this.dialog.open(CardsModalComponent, {
+      width: '600px',
+      height: '500px',
+      data: this.cards,
+    });
   }
 
 }
