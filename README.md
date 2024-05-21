@@ -1,4 +1,4 @@
-## Book Saver
+<h1 align="center"> Book Saver </h1>
 Book Saver é um aplicativo web desenvolvido com o framework Angular, projetado para ajudar usuários a gerenciar e salvar seus livros favoritos. Este projeto permite que os usuários adicionem, visualizem, editem e excluam livros da sua coleção pessoal, proporcionando uma interface amigável e intuitiva.
 
 ## Pré-requisitos
