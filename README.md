@@ -1,27 +1,50 @@
-# AngularBiblioteca
+## Book Saver
+Book Saver é um aplicativo web desenvolvido com o framework Angular, projetado para ajudar usuários a gerenciar e salvar seus livros favoritos. Este projeto permite que os usuários adicionem, visualizem, editem e excluam livros da sua coleção pessoal, proporcionando uma interface amigável e intuitiva.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+## Pré-requisitos
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
 
-## Development server
+- Node.js (versão 12 ou superior)
+- Angular CLI (versão 17 ou superior)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Começando
+Siga os passos abaixo para configurar o projeto localmente:
 
-## Code scaffolding
+1. Clone o repositório:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ ```bash
+ git clone https://github.com/seu-usuario/book-saver.git
+```
+2. Navegue até o diretório do projeto:
 
-## Build
+ ```bash
+ cd book-saver
+```
+3. Instale as dependências:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ ```bash
+ npm install
+```
+4. Inicie o servidor de desenvolvimento:
 
-## Running unit tests
+ ```bash
+ ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Abra o navegador e acesse:
 
-## Running end-to-end tests
+ ```bash
+ http://localhost:4200
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Obs: Para o uso completo é necessário também utilizar a API que se encontra no https://github.com/PedroUchoa/Spring-Book-Api
 
-## Further help
+## Contato
+Para mais informações, entre em contato através do email: joaopedrouchoacamposolimpio@gmail.com
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Estrutura do Projeto
+A estrutura principal do projeto é organizada da seguinte forma:
+
+- src/app - Contém os componentes principais, serviços e módulos do aplicativo.
+- src/assets - Contém os arquivos estáticos como imagens e estilos personalizados.
+- src/environments - Configurações de ambiente (produção e desenvolvimento).
