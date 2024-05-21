@@ -21,6 +21,7 @@ export class CardsComponent implements OnInit {
   usersService = inject(UsersService);
   userId: string = '';
   userBooksFavorites: ICards[] = [];
+  @Input() buttonValue = "";
   @Input() cards: ICards = {
     id: '',
     name: '',
