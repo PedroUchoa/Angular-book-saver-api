@@ -31,11 +31,11 @@ export class UsersService {
   }
 
   getUSerByTokenJwt(token: string | null): Observable<IUser> {
-        let headers = new HttpHeaders({
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        });
-        let options = { headers: headers };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+    let options = { headers: headers };
     return this.http.get<IUser>(`${this.BASE_URL()}/users/userJwt`, options);
   }
 
@@ -49,6 +49,16 @@ export class UsersService {
     this.http
       .post(`${this.BASE_URL()}/users/add/${userId}`, bookJson, options)
       .subscribe();
+  }
+
+  removeBookToUser(bookId: string, userId: string, token: string | null) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+    let options = { headers: headers };
+
+    return this.http.delete(`${this.BASE_URL()}/users/delete/${userId}/${bookId}`,options);
   }
 
   private doLoginUser(login: string, tokens: any) {
@@ -68,6 +78,8 @@ export class UsersService {
 
   getBooksFavorites(page: number, limit: number, userId: string | null) {
     const params = { page: page.toString(), limit: limit.toString() };
-    return this.http.get<any>(`${this.BASE_URL()}/users/favorites/${userId}`,{params});
+    return this.http.get<any>(`${this.BASE_URL()}/users/favorites/${userId}`, {
+      params,
+    });
   }
 }

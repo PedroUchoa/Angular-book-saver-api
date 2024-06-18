@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -20,8 +20,8 @@ import { CardsModalComponent } from '../cards-modal/cards-modal.component';
 export class CardsComponent implements OnInit {
   usersService = inject(UsersService);
   userId: string = '';
-  userBooksFavorites: ICards[] = [];
-  @Input() buttonValue = "";
+  userBooksFavorites = signal<ICards[] | null>(null);
+  @Input() buttonValue = '';
   @Input() cards: ICards = {
     id: '',
     name: '',
@@ -29,7 +29,9 @@ export class CardsComponent implements OnInit {
     description: '',
     image: '',
     categories: [],
-  }
+  };
+
+  @Output() reloadFavorites: EventEmitter<any> = new EventEmitter();
 
   token: string | null = localStorage.getItem('token');
 
@@ -41,7 +43,7 @@ export class CardsComponent implements OnInit {
 
   addBook() {
     this.getValues();
-    const hasBook = this.userBooksFavorites.some(
+    const hasBook = this.userBooksFavorites()?.some(
       (item) => item.id === this.cards.id
     );
 
@@ -53,16 +55,33 @@ export class CardsComponent implements OnInit {
     }
   }
 
+  removeBook() {
+    if (this.token != null && this.userId != '') {
+      this.usersService
+        .removeBookToUser(this.cards.id, this.userId, this.token)
+        .subscribe({
+          next: (data) => {
+            alert('Book Removed');
+            this.reloadEmit()
+          },
+          error: (error) => {
+            alert('There was a error: ' + error.message);
+          },
+        });
+    }
+  }
+
   getValues() {
+    console.log('deu certo aqui patrãozinho');
     if (this.token != null) {
       this.usersService.getUSerByTokenJwt(this.token).subscribe((data) => {
+        this.userBooksFavorites.set(data.books);
         this.userId = data.id;
-        this.userBooksFavorites = data.books;
       });
     }
   }
 
-  openDialog(){
+  openDialog() {
     this.dialog.open(CardsModalComponent, {
       width: '600px',
       height: '500px',
@@ -70,4 +89,7 @@ export class CardsComponent implements OnInit {
     });
   }
 
+  reloadEmit(){
+    this.reloadFavorites.emit();
+  }
 }

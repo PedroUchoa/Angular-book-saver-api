@@ -15,15 +15,17 @@ import { CardsComponent } from '../cards/cards.component';
 })
 export class CardsContainerComponent implements OnInit {
   bookService = inject(BooksService);
-  @Input() buttonValue = ''
+  @Input() buttonValue = '';
   @Input() arrayCards = signal<ICards[] | null>(null);
   @Input() totalPages = 0;
   @Input() currentPage = 0;
   @Output() nextPage: EventEmitter<any> = new EventEmitter();
   @Output() previousPage: EventEmitter<any> = new EventEmitter();
+  @Output() reloadFavorites: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {}
+  reloadEmit() {
+    this.reloadFavorites.emit('');
   }
 
   emitNextPage() {

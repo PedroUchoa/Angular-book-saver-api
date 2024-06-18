@@ -19,6 +19,7 @@ import { UsersService } from '../../services/users.service';
   ],
   templateUrl: './favorites-page.component.html',
   styleUrl: './favorites-page.component.css',
+
 })
 export class FavoritesPageComponent implements OnInit {
   cards = signal<ICards[] | null>(null);
@@ -31,6 +32,7 @@ export class FavoritesPageComponent implements OnInit {
   ngOnInit(): void {
     this.getValue();
   }
+
 
   getValue() {
     const token = localStorage.getItem('token');
