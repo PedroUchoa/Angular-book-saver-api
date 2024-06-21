@@ -1,0 +1,48 @@
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background-color: #22223b;
+  color: #c9ada7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 570px;
+  width: 70%;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.sign-container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px 0 0 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.image-container {
+  width: 60%;
+  height: 100%;
+  background-image: url(../../../assets/imagens/pexels-technobulka-2908984.jpg);
+  background-size: cover;
+  opacity: 0.6;
+  border-radius: 0 20px 20px 0;
+}
+

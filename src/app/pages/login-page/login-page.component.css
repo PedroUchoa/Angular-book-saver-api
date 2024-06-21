@@ -1,57 +1,10 @@
-.login-page {
-  height: 100vh;
-  width: 100%;
-  background-color: #22223b;
-  color: #c9ada7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.login-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 570px;
-  width: 70%;
-  border-radius: 20px;
-
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.sign-container {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 20px 0 0 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.image-container {
-  width: 60%;
-  height: 100%;
-  background-image: url(../../../assets/imagens/pexels-technobulka-2908984.jpg);
-  background-size: cover;
-  opacity: 0.6;
-  border-radius: 0 20px 20px 0;
-}
-
-.login-page form label {
+form label {
   margin-bottom: 6px;
   margin-left: 2px;
 }
 
-.login-page form {
+form {
   height: 250px;
   width: 80%;
   border: 1px solid #4a4e69;
@@ -86,7 +39,7 @@
   border-bottom: 1px solid #9d0208;
 }
 
-.login-page form button {
+form button {
   width: 100%;
   height: 38px;
   font-size: 18px;
@@ -97,7 +50,7 @@
   transition: 800ms ease-in-out;
 }
 
-.login-page form button:hover {
+form button:hover {
   cursor: pointer;
   border-color: #76c893;
   color: #76c893;
@@ -127,8 +80,10 @@
   margin-top: 5px;
   color: #c9ada7;
   transition: 800ms ease-in-out;
+  cursor: pointer;
 }
 
 .sign-up a:hover {
   color: #4361ee;
 }
+

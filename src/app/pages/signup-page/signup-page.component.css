@@ -1,21 +1,8 @@
-.login-container {
-  height: 100%;
-  width: 100%;
-  background-color: #0e0e0e;
-  color: #e9ecef;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-
-.login-container form {
-  height: max-content;
-  width: 320px;
-  background-color: #212529;
-  border: 1px solid #495057;
-  color: #e9ecef;
+form {
+  height: 250px;
+  width: 80%;
+  border: 1px solid #4a4e69;
+  color: #c9ada7;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -26,59 +13,50 @@
   border-radius: 10px;
 }
 
-.login-container form label {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  margin-left: 2px;
-}
-
-.input-form{
+.input-form {
   width: 100%;
-  height: 30px;
-  background-color: #0e0e0e;
-  border: 1px solid #495057;
-  color: #e9ecef;
+  height: 40px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-bottom: 2px solid #9a8c98;
+  color: #c9ada7;
   padding: 5px;
-  border-radius: 5px;
   font-size: 16px;
 }
 
-.invalid{
-  border: 1px solid #9d0208;
-}
-
-
 .input-form:focus {
-  outline: solid;
-  outline-color: #4361ee;
-  border: 1px solid #495057;
+  outline: none;
+  border-bottom: 1px solid #4361ee;
 }
 
-.login-container form button {
+.invalid {
+  border-bottom: 1px solid #9d0208;
+}
+
+form button {
   width: 100%;
   height: 38px;
   font-size: 18px;
   border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  background-color: #52b69a;
-  color: #e9ecef;
+  background-color: transparent;
+  color: #c9ada7;
   border: 1px solid #495057;
   transition: 800ms ease-in-out;
 }
 
-.login-container form button:hover {
+form button:hover {
   cursor: pointer;
-  background-color: #76c893;
+  border-color: #76c893;
+  color: #76c893;
 }
 
 .sign-in {
   height: 80px;
-  width: 320px;
+  width: 80%;
   padding: 16px;
-  background-color: #212529;
+  background-color: transparent;
   border: 1px solid #495057;
-  color: #e9ecef;
+  color: #c9ada7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,8 +70,14 @@
   font-size: 18px;
 }
 
-.sign-in a{
-  color: #4361ee;
+.sign-in a {
   margin-top: 5px;
-  font-size: 18px;
+  color: #c9ada7;
+  transition: 800ms ease-in-out;
+  cursor: pointer;
 }
+
+.sign-in a:hover {
+  color: #4361ee;
+}
+

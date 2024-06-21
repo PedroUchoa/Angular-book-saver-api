@@ -1,19 +1,19 @@
-<div class="login-container">
+<app-sign-layout>
   <app-header-sign type="Sign Up" />
 
   <form [formGroup]="signupForm" (ngSubmit)="doCreateUser()">
-    <label for="login">Login</label>
     <input
       id="login"
+      placeholder="Login"
       type="text"
       class="input-form"
       formControlName="login"
       [ngClass]="{ 'invalid': signupForm.controls['login'].errors?.['required'] && signupForm.controls['login'].touched}"
     />
 
-    <label for="password">Password</label>
     <input
       id="password"
+      placeholder="Password"
       type="password"
       class="input-form"
       formControlName="password"
@@ -24,9 +24,9 @@
       }"
     />
 
-    <label for="name">Name</label>
     <input
       id="name"
+      placeholder="Name"
       type="text"
       class="input-form"
       formControlName="name"
@@ -44,4 +44,4 @@
     <p>Do You Have an Account?</p>
     <a routerLink="/login">Sign in</a>
   </div>
-</div>
+</app-sign-layout>

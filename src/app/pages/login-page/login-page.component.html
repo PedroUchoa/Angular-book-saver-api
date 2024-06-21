@@ -1,38 +1,33 @@
-<div class="login-page">
-  <div class="login-container">
-    <div class="sign-container">
-      <app-header-sign type="Sign In" />
+<app-sign-layout>
+  <app-header-sign type="Sign In" />
 
-      <form [formGroup]="loginForm" (ngSubmit)="makeLogin()">
-        <input
-          id="login"
-          type="text"
-          formControlName="login"
-          placeholder="Login"
-          class="input-form"
-          [ngClass]="{ 'invalid': loginForm.controls['login'].errors?.['required'] && loginForm.controls['login'].touched}"
-        />
+  <form [formGroup]="loginForm" (ngSubmit)="makeLogin()">
+    <input
+      id="login"
+      type="text"
+      formControlName="login"
+      placeholder="Login"
+      class="input-form"
+      [ngClass]="{ 'invalid': loginForm.controls['login'].errors?.['required'] && loginForm.controls['login'].touched}"
+    />
 
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          formControlName="password"
-          class="input-form"
-          [ngClass]="{
-            invalid:
-              loginForm.controls['password'].invalid &&
-              loginForm.controls['password'].touched
-          }"
-        />
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      class="input-form"
+      [ngClass]="{
+        invalid:
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+      }"
+    />
 
-        <button (onclick)="makeLogin()">Sign Up</button>
-      </form>
-      <div class="sign-up">
-        <p>Don't have an account?</p>
-        <a routerLink="/signup">Sign Up</a>
-      </div>
-    </div>
-    <div class="image-container"></div>
+    <button (onclick)="makeLogin()">Sign Up</button>
+  </form>
+  <div class="sign-up">
+    <p>Don't have an account?</p>
+    <a routerLink="/signup">Sign Up</a>
   </div>
-</div>
+</app-sign-layout>
