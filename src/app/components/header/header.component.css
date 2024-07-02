@@ -1,9 +1,11 @@
 header {
-  width: 100%;
+  width: 93%;
   height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin: 0 auto;
 }
 
 .header-container {

@@ -5,6 +5,7 @@
     (click)="openDialog()"
   />
   <h2>{{cards.name}}</h2>
+  <p>{{cards.author}}</p>
   @if(buttonValue == "Favorite"){
     <button (click)="addBook()">{{buttonValue}}</button>
   }@else{
