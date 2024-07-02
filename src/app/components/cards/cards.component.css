@@ -1,44 +1,53 @@
 .card {
-  position: relative;
-  width: 282px;
-  height: 480px;
+  width: 250px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  box-shadow: rgba(14, 14, 14, 1) 0px 2px 18px 0px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background-color: transparent;
   padding: 10px;
+  border: 1px ridge #495057;
+  border-radius: 5px;
 }
 
 .card img {
   width: 100%;
-  height: 350px;
+  height: 320px;
 }
 
-.card img:hover{
+.card img:hover {
   cursor: pointer;
 }
 
 .card h2 {
-  font-weight: bold;
-  margin-top: 10px;
+  margin-top: 15px;
   align-self: flex-start;
-  color: #0e0e0e;
+  color: #e9ecef;
 }
 
 .card button {
   position: absolute;
   bottom: 0;
-  width: 95%;
+  width: 90%;
   height: 30px;
-  margin-top:12px;
+  margin-top: 12px;
   font-size: 18px;
-  font-weight: bold;
   background-color: transparent;
-  border: 1px solid #0e0e0e;
+  border: 1px solid #495057;
+  border-radius: 20px;
   transition: 400ms ease-in-out;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color: #e9ecef;
 }
 
 .card button:hover {
@@ -50,7 +59,6 @@
 
 @media only screen and (max-device-width: 760px) {
   .card {
-
     width: 280px;
     height: 430px;
     padding: 10px;
@@ -59,7 +67,7 @@
   .card h2 {
     margin-top: 10px;
 
-  font-size: 14px;
+    font-size: 14px;
   }
 
   .card p {

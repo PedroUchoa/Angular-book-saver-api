@@ -1,17 +1,23 @@
 <header>
-  <div class="logo-container">
-    <img
-      src="assets/icons/book.svg"
-      alt="Icone livro"
-      height="32px"
-      width="32px"
-    />
-    <h1>Book List</h1>
+  <div class="header-container">
+    <div class="logo-container">
+      <img
+        src="assets/icons/book.svg"
+        alt="Icone livro"
+        height="32px"
+        width="32px"
+      />
+      <h1>Book List</h1>
+    </div>
+    <ul>
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li>
+        <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+      </li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    </ul>
+    <div class="logout-container">
+      <button (click)="doLogout()">Logout</button>
+    </div>
   </div>
-  <ul>
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="/favorites" routerLinkActive="active">Favorites</a></li>
-    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-  </ul>
-  <div class="logout-container"><button (click)="doLogout()">Logout</button></div>
 </header>

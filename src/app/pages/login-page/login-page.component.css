@@ -8,7 +8,7 @@ form {
   height: 250px;
   width: 80%;
   border: 1px solid #4a4e69;
-  color: #c9ada7;
+  color: #e9ecef;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,8 +24,8 @@ form {
   height: 40px;
   margin-bottom: 20px;
   background-color: transparent;
-  border-bottom: 2px solid #9a8c98;
-  color: #c9ada7;
+  border-bottom: 2px solid #495057;
+  color: #e9ecef;
   padding: 5px;
   font-size: 16px;
 }
@@ -45,7 +45,7 @@ form button {
   font-size: 18px;
   border-radius: 5px;
   background-color: transparent;
-  color: #c9ada7;
+  color: #e9ecef;
   border: 1px solid #495057;
   transition: 800ms ease-in-out;
 }
@@ -62,7 +62,7 @@ form button:hover {
   padding: 16px;
   background-color: transparent;
   border: 1px solid #495057;
-  color: #c9ada7;
+  color: #e9ecef;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +78,7 @@ form button:hover {
 
 .sign-up a {
   margin-top: 5px;
-  color: #c9ada7;
+  color: #e9ecef;
   transition: 800ms ease-in-out;
   cursor: pointer;
 }

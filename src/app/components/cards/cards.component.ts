@@ -72,7 +72,6 @@ export class CardsComponent implements OnInit {
   }
 
   getValues() {
-    console.log('deu certo aqui patrãozinho');
     if (this.token != null) {
       this.usersService.getUSerByTokenJwt(this.token).subscribe((data) => {
         this.userBooksFavorites.set(data.books);
