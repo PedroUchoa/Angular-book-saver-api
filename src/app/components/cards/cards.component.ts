@@ -1,14 +1,8 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
-} from '@angular/material/dialog';
 
 import { ICards } from '../../interface/ICards.interface';
 import { UsersService } from './../../services/users.service';
-import { CardsModalComponent } from '../cards-modal/cards-modal.component';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-cards',
@@ -35,7 +29,7 @@ export class CardsComponent implements OnInit {
 
   token: string | null = localStorage.getItem('token');
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.getValues();
@@ -80,12 +74,8 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    this.dialog.open(CardsModalComponent, {
-      width: '600px',
-      height: '500px',
-      data: this.cards,
-    });
+  showModal(){
+    this.sharedService.showModal(this.cards);
   }
 
   reloadEmit(){

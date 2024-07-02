@@ -1,14 +1,18 @@
-<div class="card">
-  <img
+<div class="card" >
+  <div (click)="showModal()">
+      <img
     src={{cards.image}}
     alt="capa do livro "
-    (click)="openDialog()"
   />
   <h2>{{cards.name}}</h2>
   <p>{{cards.author}}</p>
+  </div>
   @if(buttonValue == "Favorite"){
     <button (click)="addBook()">{{buttonValue}}</button>
   }@else{
     <button (click)="removeBook()">{{buttonValue}}</button>
   }
+
+
 </div>
+

@@ -19,6 +19,10 @@
   border-radius: 5px;
 }
 
+.card div{
+  width: 100%;
+}
+
 .card img {
   width: 100%;
   height: auto;
@@ -28,22 +32,21 @@
   cursor: pointer;
 }
 
-.card h2, .card p {
+.card h2,
+.card p {
   width: 100%;
   margin-top: 15px;
   align-self: flex-start;
   color: #e9ecef;
   font-size: 20px;
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-
 }
-.card p{
+.card p {
   margin-top: 5px;
   font-size: 15px;
 }
-
 
 .card button {
   position: absolute;
@@ -69,6 +72,9 @@
   cursor: pointer;
   background-color: #e9ecef;
 }
+
+
+
 
 @media only screen and (max-device-width: 760px) {
   .card {
