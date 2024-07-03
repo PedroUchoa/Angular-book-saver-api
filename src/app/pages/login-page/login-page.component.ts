@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HeaderSignComponent } from '../../components/header-sign/header-sign.component';
 import { UsersService } from '../../services/users.service';
 import { SignLayoutComponent } from '../../components/sign-layout/sign-layout.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -37,16 +38,18 @@ export class LoginPageComponent {
   userService = inject(UsersService);
   router = inject(Router);
 
+  constructor(private toastr:ToastrService){}
+
   makeLogin() {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(
         (data) => {
           this.router.navigate(['/home']);
         },
-        (error) => alert('Login or Password invalid, please try again')
+        (error) => this.toastr.error('Login or Password invalid, please try again')
       );
     } else {
-      alert('Complete your login informations');
+      this.toastr.warning('Complete your login informations');
     }
   }
 }

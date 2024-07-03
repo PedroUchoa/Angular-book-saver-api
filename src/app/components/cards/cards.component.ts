@@ -1,8 +1,19 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+  signal,
+} from '@angular/core';
 
 import { ICards } from '../../interface/ICards.interface';
 import { UsersService } from './../../services/users.service';
 import { SharedService } from '../../services/shared.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-cards',
@@ -29,7 +40,10 @@ export class CardsComponent implements OnInit {
 
   token: string | null = localStorage.getItem('token');
 
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getValues();
@@ -41,12 +55,14 @@ export class CardsComponent implements OnInit {
       (item) => item.id === this.cards.id
     );
 
-    if (hasBook) return alert('Livro já está favoritado');
-
-    if (this.token != null && this.userId != '') {
+    if (!hasBook) {
       this.usersService.addBookToUser(this.cards.id, this.userId, this.token);
-      alert('Livro favoritado com sucesso');
+      this.toastr.success('Livro Favoritado Com Sucesso', '', {
+        timeOut: 2000,
+      });
+      return;
     }
+    this.toastr.warning('Livro já está favoritado');
   }
 
   removeBook() {
@@ -55,8 +71,8 @@ export class CardsComponent implements OnInit {
         .removeBookToUser(this.cards.id, this.userId, this.token)
         .subscribe({
           next: (data) => {
-            alert('Book Removed');
-            this.reloadEmit()
+            this.toastr.error('Livro Removido Com Sucesso');
+            this.reloadEmit();
           },
           error: (error) => {
             alert('There was a error: ' + error.message);
@@ -74,11 +90,11 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  showModal(){
+  showModal() {
     this.sharedService.showModal(this.cards);
   }
 
-  reloadEmit(){
+  reloadEmit() {
     this.reloadFavorites.emit();
   }
 }

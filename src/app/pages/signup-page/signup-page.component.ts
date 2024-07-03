@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HeaderSignComponent } from '../../components/header-sign/header-sign.component';
 import { SignLayoutComponent } from '../../components/sign-layout/sign-layout.component';
 import { UsersService } from '../../services/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup-page',
@@ -33,11 +34,13 @@ export class SignupPageComponent {
   userService = inject(UsersService);
   router = inject(Router);
 
+  constructor(private toastr:ToastrService){}
+
   doCreateUser() {
     if (this.signupForm.valid) {
       this.userService.createUser(this.signupForm.value).subscribe({
         next: (beers) => {
-          alert('Sign Up successfully');
+          this.toastr.success('Sign Up successfully');
           this.router.navigate(['/login']);
         },
         error: (e) => {
@@ -45,7 +48,7 @@ export class SignupPageComponent {
         },
       });
     } else {
-      alert('Please Check the fields and try again');
+      this.toastr.warning('Please Check the fields and try again');
     }
   }
 }
