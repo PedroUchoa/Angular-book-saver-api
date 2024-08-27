@@ -13,7 +13,7 @@ Siga os passos abaixo para configurar o projeto localmente:
 1. Clone o repositório:
 
  ```bash
- git clone https://github.com/seu-usuario/book-saver.git
+ git clone https://github.com/PedroUchoa/Angular-book-saver-api.git
 ```
 2. Navegue até o diretório do projeto:
 
